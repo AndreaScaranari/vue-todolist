@@ -41,14 +41,22 @@
                     </div>
                     <!-- bottone cancella -->
                     <button type="button" class="btn-close" @click="deleteTask(task.id)"></button>
-
                 </li>
+
+                <!-- pulsanti per azioni massive -->
+                <li class="btn-group mt-3" role="group" v-show="tasks.length">
+                    <button type="button" class="btn btn-outline-success">Tutti fatti</button>
+                    <button type="button" class="btn btn-outline-secondary">Tutti da fare</button>
+                    <button type="button" class="btn btn-outline-danger">Cancella tutti</button>
+                </li>
+
                 <!-- aggiungi new task -->
                 <li class="input-group py-3">
                         <input type="text" class="form-control" placeholder="Inserisci un nuovo task" v-model="newTaskText" @keyup.enter="addTask()">
                         <span class="input-group-text" id="add-task-button"><i class="fa-solid fa-plus px-2" @click="addTask()"></i></span>
                 </li>
-                <p class="text-center fs-3 fw-bolder" v-show="!tasks.length">Non ci sono più task!</p>
+                
+                <li class="text-center fs-3 fw-bolder" v-show="!tasks.length">Non ci sono più task!</li>
             </ul>
         </main>
     </div>
