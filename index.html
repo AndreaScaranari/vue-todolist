@@ -23,6 +23,7 @@
 
 <body>
     <div id="root" class="container">
+        <!-- Header -->
         <header class="py-3 text-center">
             <h1>Boolean - To Do List II</h1>
             <h3>Back With Vengeance</h3>
@@ -30,12 +31,18 @@
 
         <main>
             <ul class="list-group">
+                <!-- lista dinamica -->
                 <li class="list-group-item d-flex justify-content-between" :class="{'text-decoration-line-through': task.done}" role="button" v-for="task in tasks">
 
                     <span>{{task.text}}</span>
 
                     <button type="button" class="btn-close" aria-label="Close" @click="deleteTask(task.id)"></button>
 
+                </li>
+                <!-- aggiungi new task -->
+                <li class="input-group py-3">
+                        <input type="text" class="form-control" placeholder="Inserisci un nuovo task" v-model="newTaskText">
+                        <span class="input-group-text" id="add-task-button"><i class="fa-solid fa-plus px-2" @click="addTask()"></i></span>
                 </li>
             </ul>
         </main>

@@ -9,10 +9,22 @@ const app = createApp({
             { id: 3, done: false, text: 'Comprare una marca da bollo' },
             { id: 4, done: false, text: 'Aggiornare il PC' }
         ],
-        
+        newTaskText: ""        
     }),
     methods: {
-        deleteTask(id) {this.tasks = this.tasks.filter(task => id !== task.id)},
+        deleteTask(id) {
+            this.tasks = this.tasks.filter(task => id !== task.id)
+        },
+        addTask() {
+            const newTask =
+            {
+                id: new Date().toISOString(),
+                done: false,
+                text: this.newTaskText
+            }
+            this.tasks.push(newTask);
+            this.newTaskText = "";
+        }
     }
 })
 
