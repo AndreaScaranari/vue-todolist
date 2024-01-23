@@ -31,8 +31,15 @@
 
         <main>
             <ul class="list-group">
+
+                <!-- barra di ricerca -->
+                <li class="input-group py-3" v-show="tasks.length">
+                    <input type="text" class="form-control" placeholder="Cerca il task..." v-model.trim="searchText">
+                    <span class="input-group-text" id="add-task-button"><i class="fa-solid fa-magnifying-glass px-2"></i></span>
+                </li>
+
                 <!-- lista dinamica -->
-                <li class="list-group-item d-flex justify-content-between" v-for="task in tasks">
+                <li class="list-group-item d-flex justify-content-between" v-for="task in filteredTasks">
                     <!-- checkbox e label -->
                     <div class="form-check">
                         <label class="form-check-label" :class="{'text-decoration-line-through': task.done}" role="button">
@@ -44,7 +51,7 @@
                 </li>
 
                 <!-- pulsanti per azioni massive -->
-                <li class="btn-group mt-3" role="group" v-show="tasks.length">
+                <li class="btn-group mt-3" role="group" v-show="filteredTasks.length">
                     <button type="button" class="btn btn-outline-success" @click="setAllAs(true)">Tutti fatti</button>
                     <button type="button" class="btn btn-outline-secondary" @click="setAllAs(false)">Tutti da fare</button>
                     <button type="button" class="btn btn-outline-danger" @click="deleteAll">Elimina tutti</button>
@@ -56,7 +63,10 @@
                         <span class="input-group-text" id="add-task-button"><i class="fa-solid fa-plus px-2" @click="addTask()"></i></span>
                 </li>
                 
-                <li class="text-center fs-3 fw-bolder" v-show="!tasks.length">Non ci sono più task!</li>
+                <li class="text-center fs-3 fw-bolder" v-show="!filteredTasks.length">
+                    <span v-if="!tasks.length">Non ci sono più task!</span>
+                    <span v-else>Non ci sono task contenenti "{{searchText}}"</span>
+                </li>
             </ul>
         </main>
     </div>

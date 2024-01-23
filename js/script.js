@@ -9,8 +9,18 @@ const app = createApp({
             { id: 3, done: false, text: 'Comprare una marca da bollo' },
             { id: 4, done: false, text: 'Aggiornare il PC' }
         ],
-        newTaskText: ""        
+        newTaskText: "",
+        searchText: ""       
     }),
+    computed: {
+        filteredTasks(){
+            const searchTerm = this.searchText.toLowerCase();
+
+            return this.tasks.filter(task =>
+                task.text.toLowerCase().includes(searchTerm)
+            );
+        }
+    },
     methods: {
         deleteTask(id) {
             this.tasks = this.tasks.filter(task => id !== task.id)
