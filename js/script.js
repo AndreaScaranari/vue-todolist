@@ -24,6 +24,13 @@ const app = createApp({
             }
             this.tasks.push(newTask);
             this.newTaskText = "";
+        },
+        setAllAs(status) {
+            this.tasks.forEach(task => 
+                task.done = status
+        )},
+        deleteAll() {
+            this.tasks = [];
         }
     }
 })

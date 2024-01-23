@@ -45,9 +45,9 @@
 
                 <!-- pulsanti per azioni massive -->
                 <li class="btn-group mt-3" role="group" v-show="tasks.length">
-                    <button type="button" class="btn btn-outline-success">Tutti fatti</button>
-                    <button type="button" class="btn btn-outline-secondary">Tutti da fare</button>
-                    <button type="button" class="btn btn-outline-danger">Cancella tutti</button>
+                    <button type="button" class="btn btn-outline-success" @click="setAllAs(true)">Tutti fatti</button>
+                    <button type="button" class="btn btn-outline-secondary" @click="setAllAs(false)">Tutti da fare</button>
+                    <button type="button" class="btn btn-outline-danger" @click="deleteAll">Elimina tutti</button>
                 </li>
 
                 <!-- aggiungi new task -->
