@@ -30,7 +30,13 @@
 
         <main>
             <ul class="list-group">
-                <li class="list-group-item" :class="{'text-decoration-line-through': task.done}" role="button" v-for="task in tasks">{{task.text}}</li>
+                <li class="list-group-item d-flex justify-content-between" :class="{'text-decoration-line-through': task.done}" role="button" v-for="task in tasks">
+
+                    <span>{{task.text}}</span>
+
+                    <button type="button" class="btn-close" aria-label="Close" @click="deleteTask(task.id)"></button>
+
+                </li>
             </ul>
         </main>
     </div>
